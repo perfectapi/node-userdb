@@ -1,0 +1,21 @@
+{   "name":             "userdb"
+,   "version":          "0.0.1"
+    ,"description": "User database for managing user credentials"
+,   "author":  {"name": "Steve Campbell", "email": "steve@perfectapi.com" }
+    ,"keywords": "authentication,user,account,oauth"
+    ,"homepage": "https://github.com/perfectapi/node-userdb"
+    ,"bugs": {"url": "https://github.com/perfectapi/node-userdb/issues", "email": "userdb@perfectapi.com" }
+    ,"main": "./lib/main.js"
+	,"bin": "./bin/userdb.js"
+,   "engines": {
+        "node" : "0.6"
+    }
+,   "dependencies":    {   
+		"perfectapi": ">=0.0.12"
+    }
+,   "repository" :
+    {
+        "type" : "git",
+        "url" : "git://github.com/perfectapi/node-userdb.git"
+    }
+}

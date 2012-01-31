@@ -1,0 +1,54 @@
+{	"exports": "userdb",
+	"signature": [
+		{ 
+			"name": "addUser",
+			"synopsis": "Adds a new user account",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "email", "required":"true"},
+			"options": 
+				[{"option": "name", "required":"false", "description":"the name of the entity represented by this user account"},
+				{"option": "groupName", "required":"true", "description":"the name of the primary group in which the user account belongs"}
+				],
+			"returns": 
+				[{"name":"password", "description":"Initial password for the new user"}
+				],
+			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}]
+		},
+		{ 
+			"name": "removeUser",
+			"synopsis": "Removes an existing user",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "email", "required":"true"},
+			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}]
+		},
+		{ 
+			"name": "login",
+			"synopsis": "Standard username + password login",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "email", "required":"true"},
+			"options": 
+				[{"option": "password", "required":"true", "description":"the password for the user"}
+				],
+			"returns": 
+				[{"name":"SECURE_TOKEN", "description":"SECURE_TOKEN to be used in future actions"},
+				 {"name":"firstLogin", "description":"true or false flag indicating if this is the first time the user has logged in"},
+				 {"name":"changedInitialPassword", "description":"true or false flag indicating if this user has changed their initial password"}
+				]
+		},
+		{ 
+			"name": "changePassword",
+			"synopsis": "Change password action initiated by the user",
+			"description": "",
+			"verb": "POST",
+			"options": 
+				[{"option": "oldPassword", "required":"true", "description":"the current (old) password for the user"},
+				 {"option": "newPassword", "required":"true", "description":"the new password for the user"}
+				],
+			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}]
+		}
+	], 
+	"path": "userdb"
+}
