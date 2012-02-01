@@ -86,6 +86,85 @@
 				 {"name":"CLIENT_ID", "description":"CLIENT_ID to be used by the OAUTH 2.0 process"},
 				 {"name":"CLIENT_SECRET", "description":"for confidential client types only, CLIENT_SECRET to be used by the OAUTH 2.0 process"}
 				]
+		},
+		{ 
+			"name": "getAuthorizationCode",
+			"synopsis": "Get an OAUTH 2.0 authorization code, valid for a single use within 10 minutes",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "scope", "required":"false", "type":"multi", "description":"OAUTH2 scope (permissions) to grant"},
+			"options": 
+				[{"option": "clientId", "required":"true", "description":"the client id that is requesting the code"}
+				],
+			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}],
+			"returns": 
+				[{"name":"code", "description":"the requested code"},
+				 {"name":"redirectEndpoint", "description":"the client-registered redirection endpoint, i.e. where to send the browser after authentication"}
+				]
+		},
+		{ 
+			"name": "getPublicAccessToken",
+			"synopsis": "Get an OAUTH 2.0 access token for a public client type, valid for 30 minutes",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "code", "required":"true", "description":"OAUTH2 code retrieved using getAuthorizationCode"},
+			"returns": 
+				[{"name":"token", "description":"the requested token"},
+				 {"name":"refreshToken", "description":"an OAuth2 refresh token"},
+				 {"name":"expiresIn", "description":"The lifetime in seconds of the access token"},
+				 {"name":"redirectEndpoint", "description":"the client-registered redirection endpoint, i.e. where to send the browser after authentication"}
+				]
+		},
+		{ 
+			"name": "getConfidentialAccessToken",
+			"synopsis": "Get an OAUTH 2.0 access token for a confidential client type, valid for 30 minutes",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "code", "required":"true", "description":"OAUTH2 code retrieved using getAuthorizationCode"},
+			"environment": [{"parameter": "CLIENT_SECRET", "required":"true", "description":"Client secret for the registered client"},
+				{"parameter": "CLIENT_ID", "required":"true", "description":"Client id for the registered client"}],
+			"returns": 
+				[{"name":"token", "description":"the requested token"},
+				 {"name":"refreshToken", "description":"an OAuth2 refresh token"},
+				 {"name":"expiresIn", "description":"The lifetime in seconds of the access token"},
+				 {"name":"redirectEndpoint", "description":"the client-registered redirection endpoint, i.e. where to send the browser after authentication"}
+				]
+		},
+		{ 
+			"name": "getPublicRefreshedAccessToken",
+			"synopsis": "Get a new OAUTH 2.0 access token using a refresh token",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "refreshToken", "required":"true", "description":"OAUTH2 refresh token"},
+			"returns": 
+				[{"name":"token", "description":"a new token"},
+				 {"name":"refreshToken", "description":"a new OAuth2 refresh token"},
+				 {"name":"expiresIn", "description":"The lifetime in seconds of the access token"}
+				]
+		},
+		{ 
+			"name": "getConfidentialRefreshedAccessToken",
+			"synopsis": "Get a new OAUTH 2.0 access token using a refresh token",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "refreshToken", "required":"true", "description":"OAUTH2 refresh token"},
+			"environment": [{"parameter": "CLIENT_SECRET", "required":"true", "description":"Client secret for the registered client"},
+				{"parameter": "CLIENT_ID", "required":"true", "description":"Client id for the registered client"}],
+			"returns": 
+				[{"name":"token", "description":"a new token"},
+				 {"name":"refreshToken", "description":"a new OAuth2 refresh token"},
+				 {"name":"expiresIn", "description":"The lifetime in seconds of the access token"}
+				]
+		},
+		{ 
+			"name": "getGrantedScope",
+			"synopsis": "Returns the scope that was granted to a particular access token",
+			"description": "Returns the scope that was granted to a particular access token. Will return an error if the access token is invalid or has no access.",
+			"verb": "GET",
+			"parameter": {"name": "accessToken", "required":"true", "description":"OAUTH2 access token"},
+			"returns": 
+				[{"name":"scope", "description":"an array of the granted scope"}
+				]
 		}
 		
 	], 

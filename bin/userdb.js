@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var perfectapi = require('perfectapi');  
+//var perfectapi = require('perfectapi');  
+var perfectapi = require('../../perfectapi/api.js')
 var path = require('path');
 var main = require('../lib/main.js');
 
@@ -50,3 +51,41 @@ parser.on("listOAuth2Clients", function(config, callback) {
     callback(err, result);
   });
 });
+
+parser.on("getAuthorizationCode", function(config, callback) {
+  main.getAuthorizationCode(config, function(err, result) {
+    callback(err, result);
+  });
+});
+
+parser.on("getPublicAccessToken", function(config, callback) {
+  main.getPublicAccessToken(config, function(err, result) {
+    callback(err, result);
+  });
+});
+
+parser.on("getConfidentialAccessToken", function(config, callback) {
+  main.getConfidentialAccessToken(config, function(err, result) {
+    callback(err, result);
+  });
+});
+
+parser.on("getPublicRefreshedAccessToken", function(config, callback) {
+  main.getPublicRefreshedAccessToken(config, function(err, result) {
+    callback(err, result);
+  });
+});
+
+parser.on("getConfidentialRefreshedAccessToken", function(config, callback) {
+  main.getConfidentialRefreshedAccessToken(config, function(err, result) {
+    callback(err, result);
+  });
+});
+
+parser.on("getGrantedScope", function(config, callback) {
+  main.getGrantedScope(config, function(err, result) {
+    callback(err, result);
+  });
+});
+
+

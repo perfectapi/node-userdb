@@ -13,6 +13,13 @@
 ,   "dependencies":    {   
 		"perfectapi": ">=0.0.12"
     }
+, "devDependencies": {
+	"mocha": ">=0.10",
+	"should": ">=0.5"
+  }
+, "scripts": {
+	"test": "make test"
+}
 ,   "repository" :
     {
         "type" : "git",
