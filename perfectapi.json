@@ -48,7 +48,46 @@
 				 {"option": "newPassword", "required":"true", "description":"the new password for the user"}
 				],
 			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}]
+		},
+		{ 
+			"name": "registerOauth2Client",
+			"synopsis": "Register a client (application) for use with OAUTH 2.0",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "name", "required":"true", "description":"the name of the application, unique for this user"},
+			"options": 
+				[{"option": "clientType", "required":"true", "description":"the type of client, either public (most apps) or confidential (traditional web app like PHP, ASP.NET, RoR)"},
+				 {"option": "redirectEndpoint", "required":"true", "description":"the redirection endpoint, i.e. where to send the browser after authentication"}
+				],
+			"returns": 
+				[{"name":"CLIENT_ID", "description":"CLIENT_ID to be used by the OAUTH 2.0 process"},
+				 {"name":"CLIENT_SECRET", "description":"for confidential client types only, CLIENT_SECRET to be used by the OAUTH 2.0 process"}
+				],
+			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}]
+		},
+		{ 
+			"name": "unregisterOauth2Client",
+			"synopsis": "Un-register a client (application) for use with OAUTH 2.0",
+			"description": "",
+			"verb": "POST",
+			"parameter": {"name": "name", "required":"true", "description":"the name of the application, unique for this user"},
+			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}]
+		},
+		{ 
+			"name": "listOAuth2Clients",
+			"synopsis": "List the registered OAuth2 clients (applications) for the current user",
+			"description": "",
+			"verb": "POST",
+			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}],
+			"returns": 
+				[{"name":"name", "description":"the unique (for this user) name of the client"},
+				 {"name":"clientType", "description":"the type of client, either public (most apps) or confidential (traditional web app like PHP, ASP.NET, RoR)"},
+				 {"name":"redirectEndpoint", "description":"the redirection endpoint, i.e. where to send the browser after authentication"},
+				 {"name":"CLIENT_ID", "description":"CLIENT_ID to be used by the OAUTH 2.0 process"},
+				 {"name":"CLIENT_SECRET", "description":"for confidential client types only, CLIENT_SECRET to be used by the OAUTH 2.0 process"}
+				]
 		}
+		
 	], 
 	"path": "userdb"
 }

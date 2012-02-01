@@ -32,3 +32,21 @@ parser.on("changePassword", function(config, callback) {
     callback(err, result);
   });
 });
+
+parser.on("registerOauth2Client", function(config, callback) {
+  main.registerOauth2Client(config, function(err, result) {
+    callback(err, result);
+  });
+});
+
+parser.on("unregisterOauth2Client", function(config, callback) {
+  main.unregisterOauth2Client(config, function(err, result) {
+    callback(err, result);
+  });
+});
+
+parser.on("listOAuth2Clients", function(config, callback) {
+  main.listOAuth2Clients(config, function(err, result) {
+    callback(err, result);
+  });
+});
