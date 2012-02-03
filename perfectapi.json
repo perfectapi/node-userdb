@@ -8,7 +8,8 @@
 			"parameter": {"name": "email", "required":"true"},
 			"options": 
 				[{"option": "name", "required":"false", "description":"the name of the entity represented by this user account"},
-				{"option": "groupName", "required":"true", "description":"the name of the primary group in which the user account belongs"}
+				{"option": "groupName", "required":"true", "description":"the name of the primary group in which the user account belongs"},
+				{"option": "password", "required":"false", "description":"the initial password for the user"}
 				],
 			"returns": 
 				[{"name":"password", "description":"Initial password for the new user"}
