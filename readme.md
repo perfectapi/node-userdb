@@ -13,7 +13,7 @@ The implementation is a reference implementation that stores the user database i
  
 # Adding the first user
 
-This implementation allows the first user to be added without a valid SECURE_TOKEN.  
+This implementation allows the first user to be added without a valid SECURE_TOKEN.  Users can also self-register.
 
 # How groups work
 
