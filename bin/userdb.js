@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
-//var perfectapi = require('perfectapi');  
-var perfectapi = require('../../perfectapi/api.js')
+var perfectapi = require('perfectapi');  
+//var perfectapi = require('../../perfectapi/api.js')
 var path = require('path');
 var main = require('../lib/main.js');
 
 var configPath = path.resolve(__dirname, '..', 'perfectapi.json');
 var parser = new perfectapi.Parser();
-module.exports = parser.parse(configPath);
 
 //handle the commands
 parser.on("addUser", function(config, callback) {
@@ -88,4 +87,5 @@ parser.on("getGrantedScope", function(config, callback) {
   });
 });
 
+module.exports = parser.parse(configPath);
 

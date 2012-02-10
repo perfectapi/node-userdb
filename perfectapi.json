@@ -14,7 +14,7 @@
 			"returns": 
 				[{"name":"password", "description":"Initial password for the new user"}
 				],
-			"environment": [{"parameter": "SECURE_TOKEN", "required":"true"}]
+			"environment": [{"parameter": "SECURE_TOKEN", "required":"false"}]
 		},
 		{ 
 			"name": "removeUser",

@@ -5,7 +5,7 @@
     ,"keywords": "authentication,user,account,oauth"
     ,"homepage": "https://github.com/perfectapi/node-userdb"
     ,"bugs": {"url": "https://github.com/perfectapi/node-userdb/issues", "email": "userdb@perfectapi.com" }
-    ,"main": "./lib/main.js"
+    ,"main": "./bin/userdb.js"
 	,"bin": "./bin/userdb.js"
 ,   "engines": {
         "node" : "0.6"
